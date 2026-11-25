@@ -210,7 +210,7 @@ void displayCaloriesTarget(const User &user) {
     }
 
     cout << fixed << setprecision(2);
-
+    
     cout << "TDEE: " << tdee << " kkal/hari\n";
 
     if (goal == 1){

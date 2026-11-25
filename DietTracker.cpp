@@ -257,7 +257,6 @@ void displayNutrition(const User &user) {
     cout << "Faktor Aktivitas: " << faktorAktifitas << endl;
     cout << "TDEE (Total Daily Energy Expenditure): " << tdee << " kkal/hari" << endl;
 }
-
 int main () {
     User user;
     int choice = -1;

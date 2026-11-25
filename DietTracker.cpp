@@ -213,7 +213,15 @@ void displayCaloriesTarget(const User &user) {
 
     cout << "TDEE: " << tdee << " kkal/hari\n";
 
-    if 
+    if (goal == 1){
+        cout << "Tujuan Maintenence\n";
+    }
+    else {
+        cout << "Tujuan: Weight Loss\n";
+        cout << "Defisit Kalori: 300 kkal/hari\n";
+    }
+    cout << "Target Kalori: " << target << "kkal/hari\n";
+    cout << "\nCatatan: Hasil ini hanya estimasi, bukan saran medis.\n";
 }
 
 void displayNutrition(const User &user) {

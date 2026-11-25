@@ -25,6 +25,7 @@ void displayMenu() {
     cout << "3. Calculate BMI\n";
     cout << "4. Nutrition Calculator\n";
     cout << "5. Calorie Target\n";
+    cout << "6. Food Recommendation\n";
     cout << "0. Exit Program\n";
 
     cout << "------------------------------\n";
@@ -261,6 +262,63 @@ void displayNutrition(const User &user) {
     cout << "Faktor Aktivitas: " << faktorAktifitas << endl;
     cout << "TDEE (Total Daily Energy Expenditure): " << tdee << " kkal/hari" << endl;
 }
+
+void displayFoodRecommendation() {
+    string breakfast[3] = {
+        "Oatmeal",
+        "Telur Rebut",
+        "Pisang"
+    };
+
+    string lunch[3] = {
+        "Nasi dan Ayam",
+        "Nasi dan Tempe",
+        "Ikan Panggang"
+    };
+
+    string dinner[3] = {
+        "Sup Sayuran",
+        "Tahu Kukus",
+        "Sayur Tumis"
+    };
+
+    int choice;
+
+    cout << "\n===== FOOD RECOMMENDATION =====\n";
+    cout << "1. Breakfast\n";
+    cout << "2. Lunch\n";
+    cout << "3. Dinner\n";
+    cout << "Pilih Kategori Makanan: ";
+    cin >> choice;
+
+    cout << endl;
+
+    if (choice == 1) {
+        cout << "===== BREAKFAST MENU =====\n";
+
+        for (int i = 0; i < 3; i++) {
+            cout << i + 1 << ". " << breakfast[i] << endl;
+        }
+    } else if (choice == 2) {
+        cout << "===== LUNCH MENU =====\n";
+
+        for (int i = 0; i < 3; i++) {
+            cout << i + 1 << ". " << lunch[i] << endl;
+        }
+    } else if (choice == 3) {
+         cout << "===== DINNER MENU =====\n";
+
+        for (int i = 0; i < 3; i++) {
+            cout << i + 1 << ". " << dinner[i] << endl;
+        } 
+    } else {
+        cout << "Pilihan Tidak Valid\n";
+    }
+
+    cout << "\nCatatan: Pilihan makanan ini merupakan contoh umum.\n";
+    cout << "Sesuaikan porsi dan kebutuhan  gizi masing masing.\n";
+}
+
 int main () {
     User user;
     int choice = -1;
@@ -306,6 +364,10 @@ int main () {
                     } else {
                         cout << "\nSilahkan Masukkan Data User Terlebih Dahulu!\n";
                     }
+                    break;
+
+                case 6:
+                    displayFoodRecommendation();
                     break;
 
                 case 0: 

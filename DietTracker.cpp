@@ -24,6 +24,7 @@ void displayMenu() {
     cout << "2. Display User Profile\n";
     cout << "3. Calculate BMI\n";
     cout << "4. Nutrition Calculator\n";
+    cout << "5. Calorie Target\n";
     cout << "0. Exit Program\n";
 
     cout << "------------------------------\n";
@@ -213,6 +214,18 @@ void displayCaloriesTarget(const User &user) {
 
     cout << "\n===== HASIL CALORIE TARGET =====\n";
     cout << "TDEE: " << tdee << " kkal/hari\n";
+    
+    cout << "TDEE: " << tdee << " kkal/hari\n";
+
+    if (goal == 1){
+        cout << "Tujuan Maintenence\n";
+    }
+    else {
+        cout << "Tujuan: Weight Loss\n";
+        cout << "Defisit Kalori: 300 kkal/hari\n";
+    }
+    cout << "Target Kalori: " << target << "kkal/hari\n";
+    cout << "\nCatatan: Hasil ini hanya estimasi, bukan saran medis.\n";
 }
 
 void displayNutrition(const User &user) {
@@ -248,7 +261,6 @@ void displayNutrition(const User &user) {
     cout << "Faktor Aktivitas: " << faktorAktifitas << endl;
     cout << "TDEE (Total Daily Energy Expenditure): " << tdee << " kkal/hari" << endl;
 }
-
 int main () {
     User user;
     int choice = -1;
@@ -283,6 +295,14 @@ int main () {
                 case 4:
                     if (profileExists) {
                         displayNutrition(user);
+                    } else {
+                        cout << "\nSilahkan Masukkan Data User Terlebih Dahulu!\n";
+                    }
+                    break;
+
+                case 5:
+                    if (profileExists) {
+                        displayCaloriesTarget(user);
                     } else {
                         cout << "\nSilahkan Masukkan Data User Terlebih Dahulu!\n";
                     }

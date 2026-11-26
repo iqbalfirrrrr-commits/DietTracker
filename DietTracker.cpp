@@ -266,7 +266,7 @@ void displayNutrition(const User &user) {
 void displayFoodRecommendation() {
     string breakfast[3] = {
         "Oatmeal",
-        "Telur Rebut",
+        "Telur Rebus",
         "Pisang"
     };
 

@@ -11,7 +11,7 @@ struct User {
     char gender;
     double tb;
     double bb;
-    int aktifitas;
+    int aktivitas;
 };
 
 void displayMenu() {
@@ -60,7 +60,7 @@ void inputprofile(User &user) {
     cout << "5. Ekstra Aktif\n";
 
     cout << "Pilih Level Aktivitas: ";
-    cin >> user.aktifitas;
+    cin >> user.aktivitas;
 
     cout << "\nData Berhasil Disimpan!\n";
 }
@@ -73,7 +73,7 @@ void displayProfile(const User &user) {
     cout << "Jenis Kelamin: " << user.gender << endl;
     cout << "Tinggi Badan: " << user.tb << " cm" << endl;
     cout << "Berat Badan: " << user.bb << " kg" << endl;
-    cout << "Level Aktivitas: " << user.aktifitas << endl;
+    cout << "Level Aktivitas: " << user.aktivitas << endl;
 }
 
 double calculateBMI(const User &user) {
@@ -181,7 +181,7 @@ void displayCaloriesTarget(const User &user) {
         return;
     }
 
-    double faktorAktifitas = getActivityFactor(user.aktifitas);
+    double faktorAktifitas = getActivityFactor(user.aktivitas);
 
     if (faktorAktifitas == 0) {
         cout << "Level Aktivitas Tidak Valid!\n";
@@ -215,8 +215,6 @@ void displayCaloriesTarget(const User &user) {
 
     cout << "\n----- HASIL CALORIE TARGET -----\n";
     cout << "TDEE: " << tdee << " kkal/hari\n";
-    
-    cout << "TDEE: " << tdee << " kkal/hari\n";
 
     if (goal == 1){
         cout << "Tujuan Maintenence\n";
@@ -247,7 +245,7 @@ void displayNutrition(const User &user) {
         return;
     }
 
-    double faktorAktifitas = getActivityFactor(user.aktifitas);
+    double faktorAktifitas = getActivityFactor(user.aktivitas);
 
     if (faktorAktifitas == 0) {
         cout << "Level Aktivitas Tidak Valid!";
@@ -266,7 +264,7 @@ void displayNutrition(const User &user) {
 void displayFoodRecommendation() {
     string breakfast[3] = {
         "Oatmeal",
-        "Telur Rebut",
+        "Telur Rebus",
         "Pisang"
     };
 

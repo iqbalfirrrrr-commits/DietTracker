@@ -15,10 +15,10 @@ struct User {
 };
 
 void displayMenu() {
-    cout << "\n==============================\n";
+    cout << "\n------------------------------\n";
     cout << "          DIETRACKER\n";
     cout << "   Simple Diet Planning System\n";
-    cout << "==============================\n";
+    cout << "\n------------------------------\n";
 
     cout << "1. Input Data User\n";
     cout << "2. Display User Profile\n";
@@ -33,7 +33,7 @@ void displayMenu() {
 }
 
 void inputprofile(User &user) {
-    cout << "\n===== INPUT USER PROFILE =====\n";
+    cout << "\n----- INPUT USER PROFILE -----\n";
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -66,7 +66,7 @@ void inputprofile(User &user) {
 }
 
 void displayProfile(const User &user) {
-    cout << "\n===== USER PROFILE =====\n";
+    cout << "\n----- USER PROFILE -----\n";
 
     cout << "Nama: " << user.nama << endl;
     cout << "Umur: " << user.umur << " tahun" << endl;
@@ -84,7 +84,7 @@ double calculateBMI(const User &user) {
 }
 
 void displayBMI(const User &user) {
-    cout << "\n===== BMI CALCULATOR =====\n";
+    cout << "\n----- BMI CALCULATOR -----\n";
 
     if (user .tb <= 0 || user.bb <= 0) {
         cout << "Data tinggi atau berat badan tidak valid!\n";
@@ -164,7 +164,7 @@ double calculateCaloriesTarget (double tdee, int goal) {
 }
 
 void displayCaloriesTarget(const User &user) {
-    cout << "\n===== CALORIES TARGET =====\n";
+    cout << "\n----- CALORIES TARGET -----\n";
 
     if (user.umur < 18) {
         cout << "Estimasi target kalori tidak berlaku untuk dibawah 18 tahun.\n";
@@ -213,7 +213,7 @@ void displayCaloriesTarget(const User &user) {
 
     cout << fixed << setprecision(2);
 
-    cout << "\n===== HASIL CALORIE TARGET =====\n";
+    cout << "\n----- HASIL CALORIE TARGET -----\n";
     cout << "TDEE: " << tdee << " kkal/hari\n";
     
     cout << "TDEE: " << tdee << " kkal/hari\n";
@@ -284,7 +284,7 @@ void displayFoodRecommendation() {
 
     int choice;
 
-    cout << "\n===== FOOD RECOMMENDATION =====\n";
+    cout << "\n----- FOOD RECOMMENDATION -----\n";
     cout << "1. Breakfast\n";
     cout << "2. Lunch\n";
     cout << "3. Dinner\n";
@@ -294,19 +294,19 @@ void displayFoodRecommendation() {
     cout << endl;
 
     if (choice == 1) {
-        cout << "===== BREAKFAST MENU =====\n";
+        cout << "----- BREAKFAST MENU -----\n";
 
         for (int i = 0; i < 3; i++) {
             cout << i + 1 << ". " << breakfast[i] << endl;
         }
     } else if (choice == 2) {
-        cout << "===== LUNCH MENU =====\n";
+        cout << "----- LUNCH MENU -----\n";
 
         for (int i = 0; i < 3; i++) {
             cout << i + 1 << ". " << lunch[i] << endl;
         }
     } else if (choice == 3) {
-         cout << "===== DINNER MENU =====\n";
+         cout << "----- DINNER MENU -----\n";
 
         for (int i = 0; i < 3; i++) {
             cout << i + 1 << ". " << dinner[i] << endl;

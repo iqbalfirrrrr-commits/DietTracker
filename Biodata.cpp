@@ -15,6 +15,11 @@ struct user
     int aktivitas;
 };
 
+void profile(user &user){
+    cout << left << setw(10) << "\nInput User Profile\n";
+    
+}
+
 int main(){
 
 }

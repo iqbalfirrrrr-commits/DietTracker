@@ -215,8 +215,6 @@ void displayCaloriesTarget(const User &user) {
 
     cout << "\n===== HASIL CALORIE TARGET =====\n";
     cout << "TDEE: " << tdee << " kkal/hari\n";
-    
-    cout << "TDEE: " << tdee << " kkal/hari\n";
 
     if (goal == 1){
         cout << "Tujuan Maintenence\n";

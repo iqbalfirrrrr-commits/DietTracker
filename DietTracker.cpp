@@ -15,11 +15,10 @@ struct User {
 };
 
 void displayMenu() {
-    cout << "\n------------------------------\n";
-    cout << "          DIETRACKER\n";
-    cout << "   Simple Diet Planning System\n";
-    cout << "\n------------------------------\n";
-
+    cout << "\n---------------------------\n";
+    cout << "        DIETRACKER\n";
+    cout << "Simple Diet Planning System\n";
+    cout << "---------------------------\n";
     cout << "1. Input Data User\n";
     cout << "2. Display User Profile\n";
     cout << "3. Calculate BMI\n";
@@ -27,28 +26,30 @@ void displayMenu() {
     cout << "5. Calorie Target\n";
     cout << "6. Food Recommendation\n";
     cout << "0. Exit Program\n";
-    cout << "------------------------------\n";
+    cout << "---------------------------\n";
     cout << "Masukkan Pilihan Anda: ";
 }
 
 void inputprofile(User &user) {
-    cout << left << setw(10) << "\nINPUT USER PROFILE\n";
+    cout << "\n---------------------------\n";
+    cout << "    INPUT USER PROFILE\n";
+    cout << "---------------------------\n";
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    cout << "Masukkan Nama: ";
+    cout << "Masukkan Nama" << right << setw(17) << ": ";
     getline(cin, user.nama);
     
-    cout << "Masukkan Umur: ";
+    cout << "Masukkan Umur" << right << setw(17) << ": ";
     cin >> user.umur;
 
     cout << "Masukkan Jenis Kelamin (L/P): ";
     cin >> user.gender;
 
-    cout << "Masukkan Tinggi Badan (cm): ";
+    cout << "Masukkan Tinggi Badan (cm)" << right << setw(4) << ": ";
     cin >> user.tb;
 
-    cout << "Masukkan Berat Badan (kg): ";
+    cout << "Masukkan Berat Badan (kg)" << right << setw(5) << ": ";
     cin >> user.bb;
 
     cout << "\nLevel Aktivitas:\n";
@@ -57,21 +58,24 @@ void inputprofile(User &user) {
     cout << "3. Cukup Aktif\n";
     cout << "4. Sangat Aktif\n";
     cout << "5. Ekstra Aktif\n";
-
-    cout << "Pilih Level Aktivitas: ";
+    cout << "Pilih Level Aktivitas" << right << setw(9) << ": ";
     cin >> user.aktivitas;
 
-    cout << "\nData Berhasil Disimpan!\n";
+    cout << "\n---------------------------\n";
+    cout << "  Data Berhasil Disimpan!\n";
+    cout << "---------------------------\n";
 }
 
 void displayProfile(const User &user) {
-    cout << left << setw(10) << "\nUSER PROFILE\n";
+    cout << "\n---------------------------\n";
+    cout << "       USER PROFILE\n";
+    cout << "---------------------------\n";
 
-    cout << "Nama: " << user.nama << endl;
-    cout << "Umur: " << user.umur << " tahun" << endl;
-    cout << "Jenis Kelamin: " << user.gender << endl;
-    cout << "Tinggi Badan: " << user.tb << " cm" << endl;
-    cout << "Berat Badan: " << user.bb << " kg" << endl;
+    cout << "Nama" << right << setw(13) << ": " << user.nama << endl;
+    cout << "Umur" << right << setw(13) << ": " <<  user.umur << " tahun" << endl;
+    cout << "Jenis Kelamin" << right << setw(4) << ": " << user.gender << endl;
+    cout << "Tinggi Badan" << right << setw(5) << ": " << user.tb << " cm" << endl;
+    cout << "Berat Badan" << right << setw(6) << ": " <<  user.bb << " kg" << endl;
     cout << "Level Aktivitas: " << user.aktivitas << endl;
 }
 
@@ -83,7 +87,9 @@ double calculateBMI(const User &user) {
 }
 
 void displayBMI(const User &user) {
-    cout << left << setw(10) << "\nBMI CALCULATOR\n";
+    cout << "\n---------------------------\n";
+    cout << "      BMI CALCULATOR\n";
+    cout << "---------------------------\n";
 
     if (user .tb <= 0 || user.bb <= 0) {
         cout << "Data tinggi atau berat badan tidak valid!\n";
@@ -99,19 +105,19 @@ void displayBMI(const User &user) {
     }
 
     else if (bmi < 18.5) {
-        cout << "Kategori: Berat Badan Kurang.\n";
+        cout << "Kategori : Berat Badan Kurang.\n";
     }
 
     else if (bmi < 25) {
-        cout << "Kategori: Normal.\n";
+        cout << "Kategori : Normal.\n";
     }
 
     else if (bmi < 30) {
-        cout << "Kategori: Berat Badan Berlebih.\n";
+        cout << "Kategori : Berat Badan Berlebih.\n";
     }
 
     else {
-        cout << "Kategori: Obesitas.\n";
+        cout << "Kategori : Obesitas.\n";
     }
 }
 

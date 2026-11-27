@@ -132,8 +132,8 @@ double calculateBMR(const User &user) {
     return bmr;
 }
 
-double getActivityFactor(int aktifitas) {
-    switch (aktifitas) {
+double getActivityFactor(int aktivitas) {
+    switch (aktivitas) {
         case 1:
             return 1.20;
         case 2:
@@ -169,7 +169,9 @@ double calculateCaloriesTarget (double tdee, int goal) {
 }
 
 void displayCaloriesTarget(const User &user) {
-    cout << left << setw(10) << "\nCALORIES TARGET\n";
+    cout << "\n---------------------------\n";
+    cout << "      CALORIES TARGET";
+    cout << "\n---------------------------\n";
 
     if (user.umur < 18) {
         cout << "Estimasi target kalori tidak berlaku untuk dibawah 18 tahun.\n";
@@ -186,22 +188,23 @@ void displayCaloriesTarget(const User &user) {
         return;
     }
 
-    double faktorAktifitas = getActivityFactor(user.aktivitas);
+    double faktorAktivitas = getActivityFactor(user.aktivitas);
 
-    if (faktorAktifitas == 0) {
+    if (faktorAktivitas == 0) {
         cout << "Level Aktivitas Tidak Valid!\n";
         return;
     }
 
     double bmr = calculateBMR(user);
-    double tdee = calculateTDEE(bmr, faktorAktifitas);
+    double tdee = calculateTDEE(bmr, faktorAktivitas);
 
     int goal;
 
     cout << "\nPilih Tujuan Diet:\n";
     cout << "1. Menjaga Berat Badan\n";
     cout << "2. Menurunkan Berat Badan (estimasi penurunan berat badan)\n";
-    cout << "Masukkan Pilihan: "; cin >> goal;
+    cout << "Masukkan Pilihan: "; 
+    cin >> goal;
 
     double target = calculateCaloriesTarget(tdee, goal);
 
@@ -218,22 +221,26 @@ void displayCaloriesTarget(const User &user) {
 
     cout << fixed << setprecision(2);
 
-    cout << left << setw(10) << "\nHASIL CALORIE TARGET\n";
-    cout << "TDEE: " << tdee << " kkal/hari\n";
+    cout << "\n---------------------------\n";
+    cout <<"    HASIL CALORIE TARGET";
+    cout << "\n---------------------------\n";
+    cout << "TDEE" << right << setw(12) << ": " << tdee << " kkal/hari\n";
 
     if (goal == 1){
         cout << "Tujuan Maintenence\n";
     }
     else {
-        cout << "Tujuan: Weight Loss\n";
+        cout << "Tujuan        : Weight Loss\n";
         cout << "Defisit Kalori: 300 kkal/hari\n";
     }
-    cout << "Target Kalori: " << target << "kkal/hari\n";
+    cout << "Target Kalori : " << target << "kkal/hari\n";
     cout << "\nCatatan: Hasil ini hanya estimasi, bukan saran medis.\n";
 }
 
 void displayNutrition(const User &user) {
-    cout << left << setw(10) << "\nNUTRITION CALCULATOR\n";
+    cout << "\n---------------------------\n";
+    cout << "    NUTRITION CALCULATOR";
+    cout << "\n---------------------------\n";
 
     if (user.umur < 18) {
         cout << "Perhitungan Tidak berlaku untuk dibawah 18 tahun.";
@@ -261,13 +268,15 @@ void displayNutrition(const User &user) {
     double tdee = calculateTDEE(bmr, faktorAktifitas);
 
     cout << fixed << setprecision(2);
-    cout << "BMR (Basal Metabolic Rate): " << bmr << " kkal/hari" << endl;
-    cout << "Faktor Aktivitas: " << faktorAktifitas << endl;
+    cout << "BMR (Basal Metabolic Rate)" << right << setw(13) << ": " << bmr << " kkal/hari" << endl;
+    cout << "Faktor Aktivitas" << right << setw(23) << ": " << faktorAktifitas << endl;
     cout << "TDEE (Total Daily Energy Expenditure): " << tdee << " kkal/hari" << endl;
 }
 
 void displayRekomendasiMakanan(const User &user) {
-    cout << "\n===== FOOD RECOMMENDATION =====\n";
+    cout << "\n---------------------------\n";
+    cout << "    FOOD RECOMMENDATION";
+    cout << "\n---------------------------\n";
 
     if (user.umur < 18) {
         cout << "Rekomendasi berdasarkan kategori BMI dewasa ";
@@ -286,41 +295,41 @@ void displayRekomendasiMakanan(const User &user) {
     cout << "BMI Anda: " << bmi << endl;
 
     string bulking[10] = {
-        "Nasi + Ayam + Telur + Tempe - 650-800 kkal",
+        "Nasi + Ayam + Telur + Tempe         - 650-800 kkal",
         "Roti Gandum + Selai Kacang + Pisang - 350-450 kkal",
-        "Smoothie Pisang + Susu + Oat - 350-500 kkal",
-        "Nasi + Daging Sapi + Sayuran - 550-700 kkal",
-        "Ubi Rebus + Telur + Susu - 350-450 kkal",
-        "Nasi + Ayam Goreng + Tempe - 650-800 kkal",
-        "Spaghetti + Daging Cincang - 500-650 kkal",
-        "Nasi + Ikan + Telur Dadar - 550-700 kkal",
-        "Alpukat + Susu + Madu - 300-450 kkal",
-        "Kentang Panggang + Keju + Ayam - 450-600 kkal"
+        "Smoothie Pisang + Susu + Oat        - 350-500 kkal",
+        "Nasi + Daging Sapi + Sayuran        - 550-700 kkal",
+        "Ubi Rebus + Telur + Susu            - 350-450 kkal",
+        "Nasi + Ayam Goreng + Tempe          - 650-800 kkal",
+        "Spaghetti + Daging Cincang          - 500-650 kkal",
+        "Nasi + Ikan + Telur Dadar           - 550-700 kkal",
+        "Alpukat + Susu + Madu               - 300-450 kkal",
+        "Kentang Panggang + Keju + Ayam     - 450-600 kkal"
     };
 
     string stabil[10] = {
         "Nasi + Ayam Panggang + Sayur - 450-550 kkal",
-        "Oatmeal + Pisang + Susu - 300-400 kkal",
-        "Nasi + Ikan Bakar + Sayuran - 400-500 kkal",
-        "Roti Gandum + Telur Rebus - 250-350 kkal",
-        "Tempe + Tahu + Sayuran - 300-400 kkal",
-        "Nasi Merah + Ayam Rebus - 400-450 kkal",
-        "Kentang Rebus + Telur - 250-300 kkal",
-        "Sup Ayam + Sayuran - 250-350 kkal",
-        "Nasi + Pepes Ikan + Lalapan - 400-500 kkal",
-        "Salad Sayur + Telur Rebus - 200-300 kkal"
+        "Oatmeal + Pisang + Susu      - 300-400 kkal",
+        "Nasi + Ikan Bakar + Sayuran  - 400-500 kkal",
+        "Roti Gandum + Telur Rebus    - 250-350 kkal",
+        "Tempe + Tahu + Sayuran       - 300-400 kkal",
+        "Nasi Merah + Ayam Rebus      - 400-450 kkal",
+        "Kentang Rebus + Telur        - 250-300 kkal",
+        "Sup Ayam + Sayuran           - 250-350 kkal",
+        "Nasi + Pepes Ikan + Lalapan  - 400-500 kkal",
+        "Salad Sayur + Telur Rebus   - 200-300 kkal"
     };
 
     string cutting[10] = {
-        "Dada Ayam Panggang + Brokoli - 250-350 kkal",
-        "Telur Rebus + Salad Sayur - 180-250 kkal",
+        "Dada Ayam Panggang + Brokoli    - 250-350 kkal",
+        "Telur Rebus + Salad Sayur       - 180-250 kkal",
         "Ikan Kukus + Nasi Merah + Sayur - 350-450 kkal",
-        "Yogurt Plain + Buah - 150-220 kkal",
-        "Sup Tahu + Sayuran - 150-250 kkal",
-        "Oatmeal + Apel - 200-250 kkal",
-        "Kentang Rebus + Dada Ayam - 250-350 kkal",
-        "Tumis Kangkung + Tahu - 150-220 kkal",
-        "Pepes Ikan + Lalapan - 200-300 kkal",
+        "Yogurt Plain + Buah             - 150-220 kkal",
+        "Sup Tahu + Sayuran              - 150-250 kkal",
+        "Oatmeal + Apel                  - 200-250 kkal",
+        "Kentang Rebus + Dada Ayam       - 250-350 kkal",
+        "Tumis Kangkung + Tahu           - 150-220 kkal",
+        "Pepes Ikan + Lalapan            - 200-300 kkal",
         "Salad Buah Tanpa Gula Tambahan - 150-250 kkal"
     };
 
@@ -330,37 +339,40 @@ void displayRekomendasiMakanan(const User &user) {
 
     if (bmi < 18.5) {
         menu = bulking;
-        kategori = "BERAT BADAN KURANG (BULKING)";
+        kategori = "Berat Badan Kurang (Bulking)";
         saran = "Tambahkan asupan kalori dan protein secara bertahap.";
     }
     else if (bmi < 25) {
         menu = stabil;
-        kategori = "BERAT BADAN NORMAL (STABIL)";
+        kategori = "Berat Badan Normal (Stabil)";
         saran = "Pertahankan pola makan bergizi dan seimbang.";
     }
     else if (bmi < 30) {
         menu = cutting;
-        kategori = "BERAT BADAN BERLEBIH (CUTTING)";
+        kategori = "Berat Badan Berlebih (Cutting)";
         saran = "Perhatikan porsi makan dan pilih makanan bergizi seimbang.";
     }
     else {
         menu = cutting;
-        kategori = "OBESITAS (CUTTING)";
+        kategori = "Obesitas (Cutting)";
         saran = "Utamakan pola makan seimbang dan konsultasikan kebutuhan diet dengan tenaga kesehatan.";
     }
 
-    cout << "\nKategori: " << kategori << endl;
-    cout << "\n===== REKOMENDASI MAKANAN =====\n";
+    cout << "Kategori: " << kategori << endl;
+    cout << "\n---------------------------\n";
+    cout << "    REKOMENDASI MAKANAN";
+    cout << "\n---------------------------\n";
 
     for (int i = 0; i < 10; i++) {
         cout << i + 1 << ". " << menu[i] << endl;
     }
 
-    cout << "\n===== SARAN MAKANAN =====\n";
+    cout << "\n---------------------------\n";
+    cout << "       SARAN MAKANAN";
+    cout << "\n---------------------------\n";
     cout << saran << endl;
 
-    cout << "\nCatatan: Kalori merupakan perkiraan dan dapat berubah ";
-    cout << "sesuai porsi serta cara memasak.\n";
+    cout << "\nCatatan: Kalori merupakan perkiraan dan dapat berubah sesuai porsi serta cara memasak.\n";
 }
 
 int main () {
@@ -419,7 +431,9 @@ int main () {
                     break;
 
                 case 0: 
-                    cout << "\nTerima Kasih Telah Menggunakan DIETRACKER\n";
+                    cout << "\n-----------------------------------------\n";
+                    cout << "Terima Kasih Telah Menggunakan DIETRACKER";
+                    cout << "\n-----------------------------------------\n";
                     break;
 
                 default:

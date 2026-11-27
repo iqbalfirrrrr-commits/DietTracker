@@ -2,7 +2,6 @@
 #include <string>
 #include <limits>
 #include <iomanip>
-
 using namespace std;
 
 struct User {

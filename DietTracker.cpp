@@ -27,13 +27,12 @@ void displayMenu() {
     cout << "5. Calorie Target\n";
     cout << "6. Food Recommendation\n";
     cout << "0. Exit Program\n";
-
     cout << "------------------------------\n";
     cout << "Masukkan Pilihan Anda: ";
 }
 
 void inputprofile(User &user) {
-    cout << "\n----- INPUT USER PROFILE -----\n";
+    cout << left << setw(10) << "\nINPUT USER PROFILE\n";
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -66,7 +65,7 @@ void inputprofile(User &user) {
 }
 
 void displayProfile(const User &user) {
-    cout << "\n----- USER PROFILE -----\n";
+    cout << left << setw(10) << "\nUSER PROFILE\n";
 
     cout << "Nama: " << user.nama << endl;
     cout << "Umur: " << user.umur << " tahun" << endl;
@@ -84,7 +83,7 @@ double calculateBMI(const User &user) {
 }
 
 void displayBMI(const User &user) {
-    cout << "\n----- BMI CALCULATOR -----\n";
+    cout << left << setw(10) << "\nBMI CALCULATOR\n";
 
     if (user .tb <= 0 || user.bb <= 0) {
         cout << "Data tinggi atau berat badan tidak valid!\n";
@@ -164,7 +163,7 @@ double calculateCaloriesTarget (double tdee, int goal) {
 }
 
 void displayCaloriesTarget(const User &user) {
-    cout << "\n----- CALORIES TARGET -----\n";
+    cout << left << setw(10) << "\nCALORIES TARGET\n";
 
     if (user.umur < 18) {
         cout << "Estimasi target kalori tidak berlaku untuk dibawah 18 tahun.\n";
@@ -213,7 +212,7 @@ void displayCaloriesTarget(const User &user) {
 
     cout << fixed << setprecision(2);
 
-    cout << "\n----- HASIL CALORIE TARGET -----\n";
+    cout << left << setw(10) << "\nHASIL CALORIE TARGET\n";
     cout << "TDEE: " << tdee << " kkal/hari\n";
 
     if (goal == 1){
@@ -228,7 +227,7 @@ void displayCaloriesTarget(const User &user) {
 }
 
 void displayNutrition(const User &user) {
-    cout << "\n===== NUTRITION CALCULATOR =====\n";
+    cout << left << setw(10) << "\nNUTRITION CALCULATOR\n";
 
     if (user.umur < 18) {
         cout << "Perhitungan Tidak berlaku untuk dibawah 18 tahun.";
@@ -261,60 +260,101 @@ void displayNutrition(const User &user) {
     cout << "TDEE (Total Daily Energy Expenditure): " << tdee << " kkal/hari" << endl;
 }
 
-void displayFoodRecommendation() {
-    string breakfast[3] = {
-        "Oatmeal",
-        "Telur Rebus",
-        "Pisang"
-    };
+void displayRekomendasiMakanan(const User &user) {
+    cout << "\n===== FOOD RECOMMENDATION =====\n";
 
-    string lunch[3] = {
-        "Nasi dan Ayam",
-        "Nasi dan Tempe",
-        "Ikan Panggang"
-    };
-
-    string dinner[3] = {
-        "Sup Sayuran",
-        "Tahu Kukus",
-        "Sayur Tumis"
-    };
-
-    int choice;
-
-    cout << "\n----- FOOD RECOMMENDATION -----\n";
-    cout << "1. Breakfast\n";
-    cout << "2. Lunch\n";
-    cout << "3. Dinner\n";
-    cout << "Pilih Kategori Makanan: ";
-    cin >> choice;
-
-    cout << endl;
-
-    if (choice == 1) {
-        cout << "----- BREAKFAST MENU -----\n";
-
-        for (int i = 0; i < 3; i++) {
-            cout << i + 1 << ". " << breakfast[i] << endl;
-        }
-    } else if (choice == 2) {
-        cout << "----- LUNCH MENU -----\n";
-
-        for (int i = 0; i < 3; i++) {
-            cout << i + 1 << ". " << lunch[i] << endl;
-        }
-    } else if (choice == 3) {
-         cout << "----- DINNER MENU -----\n";
-
-        for (int i = 0; i < 3; i++) {
-            cout << i + 1 << ". " << dinner[i] << endl;
-        } 
-    } else {
-        cout << "Pilihan Tidak Valid\n";
+    if (user.umur < 18) {
+        cout << "Rekomendasi berdasarkan kategori BMI dewasa ";
+        cout << "tidak berlaku untuk usia di bawah 18 tahun.\n";
+        return;
     }
 
-    cout << "\nCatatan: Pilihan makanan ini merupakan contoh umum.\n";
-    cout << "Sesuaikan porsi dan kebutuhan  gizi masing masing.\n";
+    if (user.tb <= 0 || user.bb <= 0) {
+        cout << "Data tinggi atau berat badan tidak valid!\n";
+        return;
+    }
+
+    double bmi = calculateBMI(user);
+
+    cout << fixed << setprecision(2);
+    cout << "BMI Anda: " << bmi << endl;
+
+    string bulking[10] = {
+        "Nasi + Ayam + Telur + Tempe - 650-800 kkal",
+        "Roti Gandum + Selai Kacang + Pisang - 350-450 kkal",
+        "Smoothie Pisang + Susu + Oat - 350-500 kkal",
+        "Nasi + Daging Sapi + Sayuran - 550-700 kkal",
+        "Ubi Rebus + Telur + Susu - 350-450 kkal",
+        "Nasi + Ayam Goreng + Tempe - 650-800 kkal",
+        "Spaghetti + Daging Cincang - 500-650 kkal",
+        "Nasi + Ikan + Telur Dadar - 550-700 kkal",
+        "Alpukat + Susu + Madu - 300-450 kkal",
+        "Kentang Panggang + Keju + Ayam - 450-600 kkal"
+    };
+
+    string stabil[10] = {
+        "Nasi + Ayam Panggang + Sayur - 450-550 kkal",
+        "Oatmeal + Pisang + Susu - 300-400 kkal",
+        "Nasi + Ikan Bakar + Sayuran - 400-500 kkal",
+        "Roti Gandum + Telur Rebus - 250-350 kkal",
+        "Tempe + Tahu + Sayuran - 300-400 kkal",
+        "Nasi Merah + Ayam Rebus - 400-450 kkal",
+        "Kentang Rebus + Telur - 250-300 kkal",
+        "Sup Ayam + Sayuran - 250-350 kkal",
+        "Nasi + Pepes Ikan + Lalapan - 400-500 kkal",
+        "Salad Sayur + Telur Rebus - 200-300 kkal"
+    };
+
+    string cutting[10] = {
+        "Dada Ayam Panggang + Brokoli - 250-350 kkal",
+        "Telur Rebus + Salad Sayur - 180-250 kkal",
+        "Ikan Kukus + Nasi Merah + Sayur - 350-450 kkal",
+        "Yogurt Plain + Buah - 150-220 kkal",
+        "Sup Tahu + Sayuran - 150-250 kkal",
+        "Oatmeal + Apel - 200-250 kkal",
+        "Kentang Rebus + Dada Ayam - 250-350 kkal",
+        "Tumis Kangkung + Tahu - 150-220 kkal",
+        "Pepes Ikan + Lalapan - 200-300 kkal",
+        "Salad Buah Tanpa Gula Tambahan - 150-250 kkal"
+    };
+
+    string *menu;
+    string kategori;
+    string saran;
+
+    if (bmi < 18.5) {
+        menu = bulking;
+        kategori = "BERAT BADAN KURANG (BULKING)";
+        saran = "Tambahkan asupan kalori dan protein secara bertahap.";
+    }
+    else if (bmi < 25) {
+        menu = stabil;
+        kategori = "BERAT BADAN NORMAL (STABIL)";
+        saran = "Pertahankan pola makan bergizi dan seimbang.";
+    }
+    else if (bmi < 30) {
+        menu = cutting;
+        kategori = "BERAT BADAN BERLEBIH (CUTTING)";
+        saran = "Perhatikan porsi makan dan pilih makanan bergizi seimbang.";
+    }
+    else {
+        menu = cutting;
+        kategori = "OBESITAS (CUTTING)";
+        saran = "Utamakan pola makan seimbang dan konsultasikan kebutuhan diet dengan tenaga kesehatan.";
+    }
+
+    cout << "\nKategori: " << kategori << endl;
+    cout << "\n===== REKOMENDASI MAKANAN =====\n";
+
+    for (int i = 0; i < 10; i++) {
+        cout << i + 1 << ". " << menu[i] << endl;
+    }
+
+    cout << "\n===== SARAN MAKANAN =====\n";
+    cout << saran << endl;
+
+    cout << "\nCatatan: Kalori merupakan perkiraan dan dapat berubah ";
+    cout << "sesuai porsi serta cara memasak.\n";
 }
 
 int main () {
@@ -365,7 +405,11 @@ int main () {
                     break;
 
                 case 6:
-                    displayFoodRecommendation();
+                    if (profileExists) {
+                      displayRekomendasiMakanan(user);
+                    } else {
+                        cout << "\nSilahkan Masukkan Data User Terlebih Dahulu!\n";
+                    }
                     break;
 
                 case 0: 

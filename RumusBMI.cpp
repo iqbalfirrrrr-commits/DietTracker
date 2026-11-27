@@ -144,7 +144,7 @@ double calculateCaloriesTarget (double tdee, int goal) {
 }
 
 void displayCaloriesTarget(const user &user) {
-    cout << "\n===== CALORIES TARGET =====\n";
+    cout << "\nCALORIES TARGET\n";
 
     if (user.umur < 18) {
         cout << "Estimasi target kalori tidak berlaku untuk dibawah 18 tahun.\n";
@@ -193,7 +193,7 @@ void displayCaloriesTarget(const user &user) {
 
     cout << fixed << setprecision(2);
 
-    cout << "\n===== HASIL CALORIE TARGET =====\n";
+    cout << left << setw(10) << "\nHASIL CALORIE TARGET\n";
     cout << "TDEE: " << tdee << " kkal/hari\n";
 
     if (goal == 1){
@@ -208,7 +208,7 @@ void displayCaloriesTarget(const user &user) {
 }
 
 void displayNutrition(const user &user) {
-    cout << "\n===== NUTRITION CALCULATOR =====\n";
+    cout << left << setw(10) << "\nNUTRITION CALCULATOR\n";
 
     if (user.umur < 18) {
         cout << "Perhitungan Tidak berlaku untuk dibawah 18 tahun.";
